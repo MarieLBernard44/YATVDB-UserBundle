@@ -1,0 +1,54 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+<div class="container">
+<div class="row inscription">
+    
+       <div class="row">
+            <div class="col-lg-offset-3 col-lg-6">
+                <h2> Inscription </h2>
+            </div>
+        </div>
+        
+        <div class="collapse in">
+            <h4 class="text-center"> Pas encore inscrit ? Vous pouvez créer dès maintenant votre compte !</h4>
+            	<div class="col-lg-offset-3 col-lg-6">
+					
+					<form action="{{ path('fos_user_registration_register') }}" {{ form_enctype(form) }} method="POST" class="fos_user_registration_register">                    
+
+                    <div class="form-group">
+						{{ form_label(form.username, "Identifiant: ") }}
+                        {{ form_errors(form.username) }}
+                        {{ form_widget(form.username, {'attr':{'class':'form-control'}}) }}
+                    </div>
+
+                     <div class="form-group">
+                        {{ form_label(form.email, "Email: ") }}
+                        {{ form_errors(form.email) }}
+                        {{ form_widget(form.email, {'attr':{'class':'form-control'}}) }}
+                    </div>
+
+                    <div class="form-group">
+                        {{ form_errors(form.plainPassword.first) }}
+                        {{ form_label(form.plainPassword.first) }}
+                        {{ form_widget(form.plainPassword.first, {'attr': {'class': 'form-control'}}) }}
+                    </div>
+
+                    <div class="form-group">
+                        {{ form_errors(form.plainPassword.second) }}
+                        {{ form_label(form.plainPassword.second) }}
+                        {{ form_widget(form.plainPassword.second, {'attr': {'class': 'form-control'}}) }}
+                    </div>
+
+                    <div class="form-group">
+                     	<input class="btn btn-primary" type="submit" value="{{ 'registration.submit'|trans }}" />
+                    </div>
+
+					{{ form_rest(form) }}
+					
+                	</form>
+            	</div>
+        </div>
+    
+</div>
+</div>
+

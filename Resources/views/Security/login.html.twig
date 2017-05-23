@@ -1,0 +1,68 @@
+{% extends "FOSUserBundle::layout.html.twig" %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block fos_user_content %}
+{% if error %}
+    <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+{% endif %}
+<div class="container">
+	<div class="row login">
+		<div class="row">
+			<div class="col-lg-offset-2 col-lg-8">
+			    <h2> Mon compte </h2>
+			</div>
+	    </div>
+
+	<div class="col-lg-offset-2 col-lg-3 ">
+	    <div class="row">
+	        <h4> Déjà client ? </h4>
+	    </div>
+
+			<form action="{{ path("fos_user_security_check") }}" method="post">
+
+				<input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+						
+				<div class="row form-group">
+	                <label for="username">{{ 'security.login.username'|trans }}</label>
+					<input class="form-control" type="text" id="username" name="_username" value="{{ last_username }}" required="required" />
+	            </div>
+
+	            <div class="row form-group">
+	                <label for="password">{{ 'security.login.password'|trans }}</label>
+					<input class="form-control" type="password" id="password" name="_password" required="required" />
+				</div>
+
+				<div class="row form-group">
+					<input type="checkbox" id="remember_me" name="_remember_me" value="on" />
+					<label for="remember_me">{{ 'security.login.remember_me'|trans }}</label>
+				</div>
+
+				<div class="row form-group">
+					<input class="btn btn-primary" type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" />
+				</div>
+
+					    
+			</form>
+
+	</div>
+
+		<div class="col-lg-offset-2 col-lg-5">
+	        <div class="collapse in">
+	            <div class="newInscription">
+	                <h4> Pas encore inscrit? </h4>
+	                <p> Nous vous invitons à vous inscrire <br> </p>
+	                <a href={{path('fos_user_registration_register')}}> <button class="btn btn-primary"> S'inscrire  </button> </a>
+	            </div>
+
+	            <div>
+	                <br> <p> <a href={{ path('fos_user_resetting_request') }} id="forgotPassword"> Mot de passe oublié ? </a> </p>
+	            </div>
+
+	        </div>
+	    </div>
+
+
+</div>
+</div>
+{% endblock fos_user_content %}

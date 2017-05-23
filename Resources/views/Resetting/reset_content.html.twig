@@ -1,0 +1,40 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+<div class="row">
+    <h2 class="text-center"> Vous souhaitez modifier votre mot de passe? </h2>
+    <div class="col-lg-offset-1 col-lg-4 ">
+        <div class="row">
+            <p> Complétez ce formulaire, votre mot de passe sera alors réinitialisé. </p> <br>
+            <p> Une fois validé, vous devrez saisir le nouveau mot de passe que vous avez défini.</p>
+        </div>
+    </div>
+    <div class="col-lg-offset-1 col-lg-4">
+        <div class="form-group">
+
+            <form action="{{ path('fos_user_resetting_reset', {'token': token}) }}" {{ form_enctype(form) }} method="POST" class="fos_user_resetting_reset">
+
+               	<div class="form-group">
+                    {{ form_errors(form.plainPassword.first) }}
+                    {{ form_label(form.plainPassword.first) }}
+                    {{ form_widget(form.plainPassword.first, {'attr': {'class': 'form-control'}}) }}
+                </div>
+
+                <div class="form-group">
+                    {{ form_errors(form.plainPassword.second) }}
+                    {{ form_label(form.plainPassword.second) }}
+                    {{ form_widget(form.plainPassword.second, {'attr': {'class': 'form-control'}}) }}
+                </div>
+
+                <div>
+					<input type="submit" value="{{ 'resetting.reset.submit'|trans }}" />
+				</div>
+
+				{{ form_rest(form) }}
+
+            </form>
+
+        </div>
+    </div>
+</div>
+
+

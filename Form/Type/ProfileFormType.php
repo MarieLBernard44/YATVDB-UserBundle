@@ -71,6 +71,9 @@ class ProfileFormType extends AbstractType
         $builder
             ->add('username', null, array('label' => 'form.username', 'translation_domain' => 'FOSUserBundle'))
             ->add('email', 'email', array('label' => 'form.email', 'translation_domain' => 'FOSUserBundle'))
+            ->add('firstname', null, array('label'=> 'form.firstname'))
+            ->add('lastname', null, array('label' => 'form.lastname'))
+            ->add('birthdate', 'date', array('label' => 'form.lastname'))
         ;
     }
 }

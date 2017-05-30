@@ -1,42 +1,44 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
-<div class="container">
+<div class="container profilContent">
     <div class="row mesInfos">
-
-        <div class="row">
-            <div class="col-lg-offset-1 col-lg-9">
-                <h2> Mes informations </h2>
-            </div>
+        <div class="col-lg-3" >
+            <img class="thumbnail" src="{{asset(user.profilePicture.url|default('img/avatar.jpg'))}}" style="width: 100%">
         </div>
-        
-        <div class="col-lg-offset-1 col-lg-4 menuInfos ">
-                <ul class="nav nav-list">
-                    <li>
-                        <a href="{{ path('fos_user_profile_show') }}"> Mes informations <span class="glyphicon glyphicon-menu-right"> </span></a>
-                    </li>
-                    <li>
-                        <a href="{{ path('fos_user_profile_edit') }}"> Modifier mes informations <span class="glyphicon glyphicon-menu-right"> </span></a>
-                    </li>
-                    <li>
-                        <a href="{{ path('fos_user_change_password') }}"> Changer mon mot de passe <span class="glyphicon glyphicon-menu-right"> </span></a>
-                    </li>
-                    <li>
-                        <a href="{{ path('fos_user_security_logout') }}"> Déconnexion <span class="glyphicon glyphicon-menu-right"> </span></a>
-                    </li>
-                </ul>
+        <div class="col-lg-9">
+            <span> {{app.user.firstname}} </span>
+            <span> {{ app.user.lastname }} </span>
+            <h2> A PROPOS </h2>
+            <p> Huic Arabia est conserta, ex alio latere Nabataeis contigua; opima varietate conmerciorum castrisque oppleta validis et castellis, quae ad repellendos gentium vicinarum excursus sollicitudo pervigil veterum per oportunos saltus erexit et cautos. haec quoque civitates habet inter oppida quaedam ingentes Bostram et Gerasam atque Philadelphiam murorum firmitate cautissimas. hanc provinciae inposito nomine rectoreque adtributo obtemperare legibus nostris Traianus conpulit imperator incolarum tumore saepe contunso cum glorioso marte Mediam urgeret et Parthos. </p> 
+            <h2> MES PREFERENCES </h2>
         </div>
-
-        <div class="col-lg-offset-1 col-lg-4">
-            <div class="form-group">
-                <div class="fos_user_user_show">
-                    <p>{{ 'profile.show.username'|trans }}: {{ user.username }}</p>
-    			          <p>{{ 'profile.show.email'|trans }}: {{ user.email }}</p>
-    			          <p>{{ 'profile.show.firstname'|trans }}: {{ user.firstname }}</p>
-    			          <p>{{ 'profile.show.lastname'|trans }}: {{ user.lastname }}</p>
-    			          <p>{{ 'profile.show.birthdate'|trans }}: {{ user.birthdate|date('Y-m-d') }}</p>
-                </div>
-            </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-6">
+            <button style="width:100%"> Je souhaite ajouter une nouvelle série </button>
         </div>
+        <div class="col-lg-6">
+            <button style="width:100%"> Je souhaite ajouter un nouvel épisode à une série </button>
+        </div>
+    </div>
 
+    <h2> Mon fil d'actualité </h2>
+    <div class="row activite">
+        <div class="col-lg-1">
+            <img class="thumbnail" src="{{asset(user.profilePicture.url|default('img/avatar.jpg')) }}" style="width: 100%">
+        </div>
+        <div class="col-lg-11">
+            Par Marie le 12-10-2017 <br>
+            <p> Huic Arabia est conserta, ex alio latere Nabataeis contigua; opima varietate conmerciorum castrisque oppleta validis et castellis, quae ad repellendos gentium vicinarum excursus sollicitudo pervigil veterum per oportunos saltus erexit et cautos. haec quoque civitates habet inter oppida quaedam ingentes Bostram et Gerasam atque Philadelphiam murorum firmitate cautissimas. </p>
+        </div>
+    </div>
+    <div class="row activite">
+        <div class="col-lg-1">
+            <img class="thumbnail" src="{{asset(user.profilePicture.url|default('img/avatar.jpg'))}}" style="width: 100%">
+        </div>
+        <div class="col-lg-11">
+            Par Marie le 12-10-2017 <br>
+            <p> Huic Arabia est conserta, ex alio latere Nabataeis contigua; opima varietate conmerciorum castrisque oppleta validis et castellis, quae ad repellendos gentium vicinarum excursus sollicitudo pervigil veterum per oportunos saltus erexit et cautos. haec quoque civitates habet inter oppida quaedam ingentes Bostram et Gerasam atque Philadelphiam murorum firmitate cautissimas. </p>
+        </div>
     </div>
 </div>

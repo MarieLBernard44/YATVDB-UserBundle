@@ -16,6 +16,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use Symfony\Component\Security\Core\Validator\Constraints\UserPassword;
+use SerieBundle\Form\ImageType;
 
 class ProfileFormType extends AbstractType
 {
@@ -74,6 +75,7 @@ class ProfileFormType extends AbstractType
             ->add('firstname', null, array('label'=> 'form.firstname'))
             ->add('lastname', null, array('label' => 'form.lastname'))
             ->add('birthdate', 'date', array('label' => 'form.lastname'))
+            ->add('profilePicture', new ImageType(), array('label' => 'form.profilePicture'))
         ;
     }
 }

@@ -61,6 +61,13 @@
                         {{ form_widget(form.current_password, {'attr': {'class': 'form-control'}}) }}
                         {{ form_errors(form.current_password) }}
                     </div>
+
+                    <div class="form-group">
+                        {{ form_label(form.profilePicture.file, "Photo de profil") }}
+                        {{ form_widget(form.profilePicture.file, {'attr': {'class': 'form-control'}}) }}
+                        {{ form_errors(form.profilePicture.file) }}
+                    </div>
+                    
                     <div>
     			        <input class="btn btn-primary" type="submit" value="{{ 'profile.edit.submit'|trans }}" />
                     </div>

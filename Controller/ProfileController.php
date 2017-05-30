@@ -49,6 +49,10 @@ class ProfileController extends Controller
     public function editAction(Request $request)
     {
         $user = $this->getUser();
+        $user -> getProfilePicture() -> setUrl('test.png');
+        $user -> getProfilePicture() -> newDateTime();
+        
+    
         if (!is_object($user) || !$user instanceof UserInterface) {
             throw new AccessDeniedException('This user does not have access to this section.');
         }

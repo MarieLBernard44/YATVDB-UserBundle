@@ -20,6 +20,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
  * Controller managing the user profile
@@ -31,11 +32,14 @@ class ProfileController extends Controller
     /**
      * Show the user
      */
-    public function showAction()
+    public function showAction($username)
     {
-        $user = $this->getUser();
+        $em = $this->getDoctrine()->getManager();
+        $user = $em->getRepository('UserBundle:User')->findOneBy(['username' => $username]);
+
+        /* $user = $this->getUser();*/
         if (!is_object($user) || !$user instanceof UserInterface) {
-            throw new AccessDeniedException('This user does not have access to this section.');
+          throw new NotFoundHttpException("This user does not exists");
         }
 
         return $this->render('FOSUserBundle:Profile:show.html.twig', array(
@@ -49,10 +53,12 @@ class ProfileController extends Controller
     public function editAction(Request $request)
     {
         $user = $this->getUser();
-        $user -> getProfilePicture() -> setUrl('test.png');
-        $user -> getProfilePicture() -> newDateTime();
-        
-    
+
+        if($user->getProfilePicture()){
+          $user -> getProfilePicture() -> setUrl('test.png');
+          $user -> getProfilePicture() -> newDateTime();
+        }
+
         if (!is_object($user) || !$user instanceof UserInterface) {
             throw new AccessDeniedException('This user does not have access to this section.');
         }
@@ -64,12 +70,11 @@ class ProfileController extends Controller
         $dispatcher->dispatch(FOSUserEvents::PROFILE_EDIT_INITIALIZE, $event);
 
         if (null !== $event->getResponse()) {
-            return $event->getResponse();
+          return $event->getResponse();
         }
 
         /** @var $formFactory \FOS\UserBundle\Form\Factory\FactoryInterface */
         $formFactory = $this->get('fos_user.profile.form.factory');
-
         $form = $formFactory->createForm();
         $form->setData($user);
 

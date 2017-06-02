@@ -59,7 +59,6 @@ class ProfileController extends Controller
           $user -> getProfilePicture() -> newDateTime();
         }
 
-
         if (!is_object($user) || !$user instanceof UserInterface) {
             throw new AccessDeniedException('This user does not have access to this section.');
         }
@@ -71,7 +70,7 @@ class ProfileController extends Controller
         $dispatcher->dispatch(FOSUserEvents::PROFILE_EDIT_INITIALIZE, $event);
 
         if (null !== $event->getResponse()) {
-            return $event->getResponse();
+          return $event->getResponse();
         }
 
         /** @var $formFactory \FOS\UserBundle\Form\Factory\FactoryInterface */

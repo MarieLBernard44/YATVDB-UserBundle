@@ -12,20 +12,30 @@
             {{app.user.email}} </span>
         </div>
 
-        
-        <div class="col-lg-3 menuProfil thumbnail">
-            <ul class="nav nav-list">
-                <li>
-                    <a href="{{ path('fos_user_profile_edit') }}"> Modifier mes informations <i class="glyphicon glyphicon-menu-right"> </i></a>
-                </li>
-                <li>
-                    <a href="{{ path('fos_user_change_password') }}"> Changer mon mot de passe <i class="glyphicon glyphicon-menu-right"> </i></a>
-                </li>
-                <li>
-                    <a href="{{ path('fos_user_security_logout') }}"> Déconnexion <i class="glyphicon glyphicon-menu-right"> </i></a>
-                </li>
-            </ul>
-        </div>
+        {% if app.user.id == user.id %}
+            <div class="col-lg-3 menuProfil thumbnail">
+                <ul class="nav nav-list">
+                    <li>
+                        <a href="{{ path('fos_user_profile_edit') }}">
+                            Modifier mes informations
+                            <i class="glyphicon glyphicon-menu-right"> </i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ path('fos_user_change_password') }}">
+                            Changer mon mot de passe
+                            <i class="glyphicon glyphicon-menu-right"> </i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ path('fos_user_security_logout') }}">
+                            Déconnexion
+                            <i class="glyphicon glyphicon-menu-right"> </i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        {% endif %}
     </div>
 
 

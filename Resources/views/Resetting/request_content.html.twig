@@ -1,6 +1,7 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
-<div class="row">
+<div class="container passwordForget">
+    <div class="row">
         <div class="col-lg-offset-1 col-lg-4 ">
             <div class="row">
                 <h4 class="text-center"> Vous avez oublié votre mot de passe? </h4>
@@ -21,8 +22,9 @@
                     </div>
                 </div>
                 <div>
-                    <input class="btn btn-primary" type="submit" value="{{ 'resetting.request.submit'|trans }}" />
+                    <input class="btn-passwordForget btn" type="submit" value="{{ 'resetting.request.submit'|trans }}" />
                 </div>
             </form>
         </div>
+    </div>
 </div>

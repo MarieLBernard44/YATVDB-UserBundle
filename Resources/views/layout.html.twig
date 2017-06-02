@@ -2,6 +2,7 @@
     {%block body%}
 
         <div class="container">
+        <!--
             <div class="form-group">
                 {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                     {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
@@ -21,7 +22,7 @@
                         </div>
                     {% endfor %}
                 {% endfor %}
-            {% endif %}
+            {% endif %} -->
 
             <div class="form-group">
                 {% block fos_user_content %}

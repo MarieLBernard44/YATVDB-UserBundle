@@ -36,14 +36,22 @@ class RegistrationFormType extends AbstractType
           ->add('username', null, array('label' => 'form.username', 'translation_domain' => 'FOSUserBundle'))
           ->add('firstname', null, array('label' => 'form.firstname'))
           ->add('lastname', null, array('label' => 'form.lastname'))
-          ->add('birthdate', 'date' , array('label' => 'form.birthdate'))
+          ->add('birthdate', 'date', [
+              'widget' => 'single_text',
+              'html5' => false,
+              'format' => 'dd-MM-yyyy',
+              'label' => 'form.birthdate',
+              'attr' => ["class" => 'js-datepicker form-control',
+                         "placeholder" => 'Pick a date']
+          ])
           ->add('plainPassword', 'repeated', array('type' => 'password',
                                                    'options' => array('translation_domain' => 'FOSUserBundle'),
                                                    'first_options' => array('label' => 'form.password'),
                                                    'second_options' => array('label' => 'form.password_confirmation'),
                                                    'invalid_message' => 'fos_user.password.mismatch',
                                                    ))
-          ->add('profilePicture', new ImageType())
+          ->add('profilePicture', new ImageType(), ['required' => false,
+                                                    'attr' => ['class' => 'form-control']])
         ;
     }
 

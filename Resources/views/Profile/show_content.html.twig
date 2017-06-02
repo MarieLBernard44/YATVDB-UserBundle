@@ -23,22 +23,17 @@
     </div>
 
     <h2> Mon fil d'actualité </h2>
+    {% for c in user.comments %}
     <div class="row activite">
         <div class="col-lg-1">
             <img class="thumbnail" src="{{asset(user.profilePicture.url|default('img/avatar.jpg')) }}" style="width: 100%">
         </div>
         <div class="col-lg-11">
-            Par Marie le 12-10-2017 <br>
-            <p> Huic Arabia est conserta, ex alio latere Nabataeis contigua; opima varietate conmerciorum castrisque oppleta validis et castellis, quae ad repellendos gentium vicinarum excursus sollicitudo pervigil veterum per oportunos saltus erexit et cautos. haec quoque civitates habet inter oppida quaedam ingentes Bostram et Gerasam atque Philadelphiam murorum firmitate cautissimas. </p>
+            <span>{{  c.createdAt|date('d/m/Y') }}</span>
+            <p>
+                {{ c.content }}
+            </p>
         </div>
     </div>
-    <div class="row activite">
-        <div class="col-lg-1">
-            <img class="thumbnail" src="{{asset(user.profilePicture.url|default('img/avatar.jpg'))}}" style="width: 100%">
-        </div>
-        <div class="col-lg-11">
-            Par Marie le 12-10-2017 <br>
-            <p> Huic Arabia est conserta, ex alio latere Nabataeis contigua; opima varietate conmerciorum castrisque oppleta validis et castellis, quae ad repellendos gentium vicinarum excursus sollicitudo pervigil veterum per oportunos saltus erexit et cautos. haec quoque civitates habet inter oppida quaedam ingentes Bostram et Gerasam atque Philadelphiam murorum firmitate cautissimas. </p>
-        </div>
-    </div>
+    {% endfor %}
 </div>

@@ -74,7 +74,15 @@ class ProfileFormType extends AbstractType
             ->add('email', 'email', array('label' => 'form.email', 'translation_domain' => 'FOSUserBundle'))
             ->add('firstname', null, array('label'=> 'form.firstname'))
             ->add('lastname', null, array('label' => 'form.lastname'))
-            ->add('birthdate', 'date', array('label' => 'form.lastname'))
+        /* ->add('birthdate', 'date', array('label' => 'form.lastname'))*/
+            ->add('birthdate', 'date', [
+                'widget' => 'single_text',
+                'html5' => false,
+                'format' => 'dd-MM-yyyy',
+                'label' => 'form.lastname',
+                'attr' => ["class" => 'js-datepicker form-control',
+                           "placeholder" => 'Pick a date']
+            ])
             ->add('profilePicture', new ImageType(), array('label' => 'form.profilePicture'))
         ;
     }

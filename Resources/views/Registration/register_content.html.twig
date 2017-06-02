@@ -50,13 +50,13 @@
                     </div>
                     <div class="form-group">
                         {{ form_label(form.birthdate, "Birthdate") }}
-                        {{ form_widget(form.birthdate, {'attr': {'class': 'form-control'}}) }}
+                        {{ form_widget(form.birthdate) }}
                         {{ form_errors(form.birthdate) }}
                     </div>
 
                     <div class="form-group">
                         {{ form_label(form.profilePicture.file, "Photo de profil") }}
-                        {{ form_widget(form.profilePicture.file, {'attr': {'class': 'form-control'}}) }}
+                        {{ form_widget(form.profilePicture.file) }}
                         {{ form_errors(form.profilePicture.file) }}
                     </div>
 

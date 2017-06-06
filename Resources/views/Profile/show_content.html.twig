@@ -9,32 +9,33 @@
             <br><span class="username"> {{user.username}} </span>  <span> - {{user.firstname}} {{user.lastname }} </span> <br> 
             <span class="profile"> Date de naissance: {{user.birthdate | date('d/m/Y')}} </span> <br><br>
             <span class="profile"> Si vous souhaitez échanger votre passion des séries avec moi, vous pouvez me contacter sur l'adresse mail suivante: </span> <span class="profile" style="font-weight: bold">
-            {{app.user.email}} </span>
+                {{user.email}} </span>
         </div>
-
-        {% if app.user.id == user.id %}
-            <div class="col-lg-3 menuProfil thumbnail">
-                <ul class="nav nav-list">
-                    <li>
-                        <a href="{{ path('fos_user_profile_edit') }}">
-                            Modifier mes informations
-                            <i class="glyphicon glyphicon-menu-right"> </i>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ path('fos_user_change_password') }}">
-                            Changer mon mot de passe
-                            <i class="glyphicon glyphicon-menu-right"> </i>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ path('fos_user_security_logout') }}">
-                            Déconnexion
-                            <i class="glyphicon glyphicon-menu-right"> </i>
-                        </a>
-                    </li>
-                </ul>
-            </div>
+        {% if app.user %}
+            {% if app.user.id == user.id %}
+                <div class="col-lg-3 menuProfil thumbnail">
+                    <ul class="nav nav-list">
+                        <li>
+                            <a href="{{ path('fos_user_profile_edit') }}">
+                                Modifier mes informations
+                                <i class="glyphicon glyphicon-menu-right"> </i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ path('fos_user_change_password') }}">
+                                Changer mon mot de passe
+                                <i class="glyphicon glyphicon-menu-right"> </i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ path('fos_user_security_logout') }}">
+                                Déconnexion
+                                <i class="glyphicon glyphicon-menu-right"> </i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            {% endif %}
         {% endif %}
     </div>
 

@@ -90,7 +90,7 @@ class ProfileController extends Controller
             $userManager->updateUser($user);
 
             if (null === $response = $event->getResponse()) {
-                $url = $this->generateUrl('fos_user_profile_show');
+                $url = $this->generateUrl('fos_user_profile_show', ['username' => $user->getUsername()] );
                 $response = new RedirectResponse($url);
             }
 

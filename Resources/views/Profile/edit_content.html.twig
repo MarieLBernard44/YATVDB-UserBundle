@@ -17,7 +17,7 @@
                     <a href="{{ path('fos_user_profile_edit') }}"> Modifier mes informations <span class="glyphicon glyphicon-menu-right"> </span></a>
                 </li>
                 <li>
-                    <a href="{{ path('fos_user_change_password') }}"> Changer mon mot de passe <span class="glyphicon glyphicon-menu-right"> </span></a>
+                    <a href="{{ path('fos_user_change_password', {'username': app.user.username}) }}"> Changer mon mot de passe <span class="glyphicon glyphicon-menu-right"> </span></a>
                 </li>
                 <li>
                     <a href="{{ path('fos_user_security_logout') }}"> Déconnexion <span class="glyphicon glyphicon-menu-right"> </span></a>

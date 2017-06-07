@@ -22,7 +22,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="{{ path('fos_user_change_password') }}">
+                            <a href="{{ path('fos_user_change_password', {'username': user.username}) }}">
                                 Changer mon mot de passe
                                 <i class="glyphicon glyphicon-menu-right"> </i>
                             </a>
